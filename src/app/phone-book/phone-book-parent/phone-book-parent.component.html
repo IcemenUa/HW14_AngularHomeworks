@@ -1,0 +1,45 @@
+<div class="container">
+  <h1 class="page_name">Phone book</h1>
+  <hr>
+  <div class="input" *ngIf="!addStatus">
+    <!-- PhoneSearch -->
+    <input type="text" class="form-control " placeholder="search" [(ngModel)]="search">
+    <!-- PhoneAddBtn -->
+    <button type="button" class="btn btn-success" (click)="changeAddStatus()">Add</button>
+
+  </div>
+
+  <!-- PhoneAddInputs -->
+  <div class="content" *ngIf="addStatus">
+
+    <!-- Number -->
+    <input type="tel" class="form-control phone_add_input" id="validationTel" [ngClass]="{'is-invalid': !telStatus }"
+      aria-describedby="basic-addon3" [(ngModel)]="number" name="number" placeholder="Phone">
+    <div id="validationTel" class="invalid-feedback">
+      Please input a valid phone number.
+    </div>
+    <!-- FirstName -->
+    <input type="text" class="form-control phone_add_input" id="validationFName"
+      [ngClass]="{'is-invalid': !fNameStatus }" aria-describedby="basic-addon3" [(ngModel)]="firstName" name="firstName"
+      placeholder="First name">
+    <div id="validationFName" class="invalid-feedback">
+      Enter a name. At least 3 characters.
+    </div>
+    <!-- LastName -->
+    <input type="text" class="form-control phone_add_input" id="validationSName"
+      [ngClass]="{'is-invalid': !sNameStatus }" aria-describedby="basic-addon3" [(ngModel)]="lastName" name="lastName"
+      placeholder="Last name">
+    <div id="validationSName" class="invalid-feedback">
+      Enter a lastname. At least 3 characters.
+    </div>
+    <!-- AddBtn -->
+    <button class="btn btn-success phone_add_input" (click)="addPhone()">Add</button>
+
+    <button class="btn btn-danger phone_cancel_btn" (click)="addPhoneCancel()">Cancel</button>
+  </div>
+
+  <!-- PhoneTableElement -->
+  <app-phone-book-child *ngIf="!addStatus" [phoneArr]="phoneBookArr" [search]='search'
+    (changePhoneArr)="newPhoneArr($event)"></app-phone-book-child>
+
+</div>

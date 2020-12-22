@@ -1,0 +1,56 @@
+
+<div class="contentContainer">
+    <div class="form">
+      <form>
+        <p class="label">Login</p>
+        <input type="text" placeholder="Enter login" [(ngModel)]="userLogin" name="userLogin">
+  
+        <p class="label">Password</p>
+        <input type="password" placeholder="Enter password" [(ngModel)]="userPassword" name="userPassword">
+  
+        <p class="label">Email</p>
+        <input type="email" placeholder="Enter email" [(ngModel)]="userEmail" name="userEmail">
+  
+        <input *ngIf="!editStatus" type="button" value="Add user" (click)="addUser()">
+  
+        <input *ngIf="editStatus" type="button" value="Save user" (click)="saveUser()">
+  
+  
+      </form>
+  
+    </div>
+    <div class="table">
+      <table>
+        <thead>
+  
+          <tr>
+            <td class="tableColumName">#</td>
+            <td class="tableColumName">Login</td>
+            <td class="tableColumName">Password</td>
+            <td class="tableColumName">Email</td>
+            <td class="tableColumName">Edit</td>
+            <td class="tableColumName">Delete</td>
+          </tr>
+  
+        </thead>
+        <tbody id="table">
+          <tr *ngFor="let user of usersArr;index as i;">
+            <td class="tableColumName">{{i+1}}</td>
+            <td class="tableColumName">{{user.login}}</td>
+            <td class="tableColumName">{{user.password}}</td>
+            <td class="tableColumName">{{user.email}}</td>
+  
+            <td class="tableColumName"><button class="deleteEdit" style="background-color: red;"
+                (click)="deleteUser(i)">Delete</button></td>
+  
+            <td class="tableColumName"><button class="deleteEdit" style="background-color: yellow;"
+                (click)="editUser(user,i)">Edit</button></td>
+          </tr>
+  
+  
+        </tbody>
+      </table>
+    </div>
+  
+  </div>
+  

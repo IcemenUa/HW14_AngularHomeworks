@@ -1,0 +1,37 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col" (click)="sortByFname()">First name</th>
+        <th scope="col" (click)="sortBySname()">Last name</th>
+        <th scope="col" (click)="sortByNumber()">Number</th>
+        <th scope="col">edit</th>
+        <th scope="col">delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of phoneArr|orderBy:sortBy|search:search index as index">
+        <td>{{item.firstName}}</td>
+        <td>{{item.lastName}}</td>
+        <td>{{item.phone}}</td>
+        <td><button type="button" [disabled]=editStatus class="btn btn-warning"
+            (click)="editNumber(index,item)">edit</button></td>
+        <td><button type="button" class="btn btn-danger" [disabled]=editStatus (click)="deleteNumber(index)">delete</button></td>
+      </tr>
+    </tbody>
+  
+  </table>
+  
+  <div class="content" *ngIf="editStatus">
+  
+    <input type="tel" class="form-control phone_edit_input" aria-describedby="basic-addon3" [ngClass]="{'is-invalid': !telStatus }" [(ngModel)]="NewNumber"
+      name="NewNumber" placeholder="Phone">
+  
+    <input type="text" class="form-control phone_edit_input" aria-describedby="basic-addon3" [ngClass]="{'is-invalid': !fNameStatus }" [(ngModel)]="NewFirstName"
+      name="NewFirstName" placeholder="First name">
+  
+    <input type="text" class="form-control phone_edit_input" aria-describedby="basic-addon3" [ngClass]="{'is-invalid': !sNameStatus }"[(ngModel)]="NewLastName"
+      name="NewLastName" placeholder="Last name">
+  
+    <button class="btn btn-success phone_edit_input" (click)="change()">Edit</button>
+  </div>
+  

@@ -1,0 +1,20 @@
+.input {
+  margin: 0 0 2vh 0;
+  display: flex;
+  justify-content: center;
+align-items: center;
+}
+
+input {
+  margin-right: 1%;
+}
+
+.phone_add_input{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.phone_cancel_btn{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+}

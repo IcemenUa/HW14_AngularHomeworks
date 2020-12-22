@@ -1,0 +1,27 @@
+
+<div class="pageNameContainer">
+  <h1 class="pageName">List of prohibited words</h1>
+</div>
+<div class="container">
+
+
+  <div class="container_BadWords">
+    <p id="badWordsList">Bad words:
+      <span *ngFor="let word of badWordsArr;">
+        {{word}}
+      </span>
+    </p>
+  </div>
+  <div class="container_badWordsEditor">
+
+    <input type="text" class="badWordsEditor_text" [class.red]="isRed" [(ngModel)]="badWord">
+
+    <button class="badWordsEditor_btn" style="background-color: limegreen;" (click)="badWordAdd()">Add</button>
+    <button class="badWordsEditor_btn" style="background-color: red;" (click)="badWordReset()">Reset</button>
+  </div>
+  <textarea class="container_textArea" [class.empty]="isEmpty" placeholder="text here..."
+    [(ngModel)]="cenzorText"></textarea>
+
+  <button class="container_CenzorBtn" id="CenzorBtn" (click)="cenzor()">Cenzor</button>
+
+</div>
